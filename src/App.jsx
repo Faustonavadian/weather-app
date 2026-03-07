@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getCoordinates, getWeather } from "./services/weatherService";
+import WeatherCard from "./components/WeatherCard";
 
 function App() {
   const [city, setCity] = useState("");
@@ -36,13 +37,8 @@ function App() {
 
       {loading && <p>Loading weather...</p>}
 
-      {weather && !loading && (
-        <div style={{ marginTop: 20 }}>
-          <h2>{weather.city}</h2>
-          <p>Temperature: {weather.temperature} °C</p>
-          <p>Wind Speed: {weather.windspeed} km/h</p>
-        </div>
-      )}
+      {weather && !loading && <WeatherCard weather={weather} />}
+
     </div>
   );
 }
