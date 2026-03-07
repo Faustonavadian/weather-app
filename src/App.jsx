@@ -1,8 +1,40 @@
+import { useState } from "react";
+import { getCoordinates, getWeather } from "./services/weatherService";
+
 function App() {
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState(null);
+
+  const searchWeather = async () => {
+    try {
+      const coords = await getCoordinates(city);
+      const weatherData = await getWeather(coords.latitude, coords.longitude);
+      setWeather({ ...weatherData, city: coords.name });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
-    <div>
+    <div style={{ padding: 40 }}>
       <h1>Weather App</h1>
-      <p>Project starting...</p>
+
+      <input
+        type="text"
+        placeholder="Enter city"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+      />
+
+      <button onClick={searchWeather}>Search</button>
+
+      {weather && (
+        <div style={{ marginTop: 20 }}>
+          <h2>{weather.city}</h2>
+          <p>Temperature: {weather.temperature}°C</p>
+          <p>Wind Speed: {weather.windspeed} km/h</p>
+        </div>
+      )}
     </div>
   );
 }
