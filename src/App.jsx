@@ -23,19 +23,48 @@ function App() {
   };
 
   return (
-    <div style={{ padding: 40 }}>
+    <div
+      style={{
+        background: "white",
+        padding: 40,
+        borderRadius: 12,
+        width: 350,
+        boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
+        textAlign: "center"
+      }}
+    >
       <h1>Weather App</h1>
 
-      <input
-        type="text"
-        placeholder="Enter city"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-      />
+      <div style={{ display: "flex", gap: 10 }}>
+        <input
+          type="text"
+          placeholder="Enter city"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          style={{
+            flex: 1,
+            padding: 10,
+            borderRadius: 6,
+            border: "1px solid #ccc"
+          }}
+        />
 
-      <button onClick={searchWeather}>Search</button>
+        <button
+          onClick={searchWeather}
+          style={{
+            padding: "10px 15px",
+            borderRadius: 6,
+            border: "none",
+            background: "#4facfe",
+            color: "white",
+            cursor: "pointer"
+          }}
+        >
+          Search
+        </button>
+      </div>
 
-      {loading && <p>Loading weather...</p>}
+      {loading && <p style={{ marginTop: 20 }}>Loading weather...</p>}
 
       {weather && !loading && <WeatherCard weather={weather} />}
 

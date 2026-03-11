@@ -9,23 +9,25 @@ function WeatherCard({ weather }) {
     };
 
   return (
-    <div style={{
-      marginTop: 20,
-      padding: 20,
-      border: "1px solid #ccc",
-      borderRadius: 8,
-      width: 250
-    }}>
+    <div
+      style={{
+        marginTop: 25,
+        padding: 20,
+        borderRadius: 10,
+        background: "#f5f7fa"
+      }}
+    >
       <h2>{weather.city}</h2>
 
-      <h3 style={{ fontSize: 40 }}>
+      <div style={{ fontSize: 50 }}>
         {weatherInfo.icon}
-      </h3>
+      </div>
 
-      <p>{weatherInfo.label}</p>
+      <p style={{ margin: 5 }}>{weatherInfo.label}</p>
 
-      <p>Temperature: {weather.temperature}°C</p>
-      <p>Wind Speed: {weather.windspeed} km/h</p>
+      <h3>{weather.temperature}°C</h3>
+
+      <p>Wind {weather.windspeed} km/h</p>
     </div>
   );
 }
