@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getWeatherBackground } from "./services/backgroundService";
 import { getCoordinates, getWeather } from "./services/weatherService";
 import WeatherCard from "./components/WeatherCard";
 
@@ -6,6 +7,10 @@ function App() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
+  const background = weather
+  ? getWeatherBackground(weather.weathercode)
+  : "linear-gradient(135deg, #4facfe, #00f2fe)";
+
 
   const searchWeather = async () => {
     try {
@@ -25,7 +30,7 @@ function App() {
   return (
     <div
       style={{
-        background: "white",
+        background: background,
         padding: 40,
         borderRadius: 12,
         width: 350,
@@ -33,14 +38,19 @@ function App() {
         textAlign: "center"
       }}
     >
-      <h1>Weather App</h1>
+      <h1>The Weather App</h1>
 
       <div style={{ display: "flex", gap: 10 }}>
         <input
           type="text"
-          placeholder="Enter city"
+          placeholder="Search for a city..."
           value={city}
           onChange={(e) => setCity(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              searchWeather();
+            }
+          }}
           style={{
             flex: 1,
             padding: 10,
