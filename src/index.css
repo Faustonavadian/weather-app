@@ -1,18 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap");
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-
-  background: linear-gradient(
-    135deg,
-    #4facfe 0%,
-    #00f2fe 100%
-  );
-
-  transition: background 0.6s ease;
-
   min-height: 100vh;
-
+  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  color: #eef6ff;
+  background:
+    radial-gradient(circle at 14% 20%, rgba(54, 110, 210, 0.35), transparent 45%),
+    radial-gradient(circle at 86% 10%, rgba(29, 73, 148, 0.34), transparent 42%),
+    linear-gradient(145deg, #030a18 0%, #071f45 46%, #0a315d 100%);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 999px;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: -1;
+  animation: float-glow 12s ease-in-out infinite;
+}
+
+body::before {
+  width: 340px;
+  height: 340px;
+  top: -120px;
+  left: -100px;
+  background: rgba(75, 135, 255, 0.24);
+}
+
+body::after {
+  width: 280px;
+  height: 280px;
+  right: -90px;
+  bottom: -80px;
+  background: rgba(37, 96, 196, 0.26);
+  animation-delay: -3s;
+}
+
+@keyframes float-glow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
 }

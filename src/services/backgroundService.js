@@ -1,20 +1,20 @@
 export const getWeatherBackground = (weathercode) => {
 
   if (weathercode === 0) {
-    return "linear-gradient(135deg, #56ccf2, #2f80ed)";
+    return "linear-gradient(145deg, #123777, #1f5cad)";
   }
 
   if (weathercode <= 3) {
-    return "linear-gradient(135deg, #bdc3c7, #2c3e50)";
+    return "linear-gradient(145deg, #112c56, #214273)";
   }
 
   if (weathercode >= 51 && weathercode <= 65) {
-    return "linear-gradient(135deg, #4b79a1, #283e51)";
+    return "linear-gradient(145deg, #0f2446, #1d477c)";
   }
 
   if (weathercode >= 71) {
-    return "linear-gradient(135deg, #e6dada, #274046)";
+    return "linear-gradient(145deg, #1a3658, #2c6094)";
   }
 
-  return "linear-gradient(135deg, #4facfe, #00f2fe)";
+  return "linear-gradient(145deg, #102d5a, #1f4d89)";
 };

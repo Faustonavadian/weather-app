@@ -1,33 +1,51 @@
 import { weatherCodeMap } from "../services/weatherCodes";
 
 function WeatherCard({ weather }) {
-
   const weatherInfo =
     weatherCodeMap[weather.weathercode] || {
       label: "Unknown",
       icon: "❓"
     };
 
-  return (
-    <div
-      style={{
-        marginTop: 25,
-        padding: 20,
-        borderRadius: 10,
-        background: "#f5f7fa"
-      }}
-    >
-      <h2>{weather.city}</h2>
+  const formatMetric = (value, suffix) => {
+    if (value === null || value === undefined || Number.isNaN(value)) {
+      return "--";
+    }
 
-      <div style={{ fontSize: 50 }}>
-        {weatherInfo.icon}
+    return `${value}${suffix}`;
+  };
+
+  return (
+    <div className="weather-card">
+      <div className="weather-core">
+        <h2 className="weather-city">{weather.city}</h2>
+
+        <div className="weather-icon">{weatherInfo.icon}</div>
+
+        <div className="weather-temp">
+          {Math.round(weather.temperature)}
+          <span className="weather-unit">°C</span>
+        </div>
+
+        <p className="weather-label">{weatherInfo.label}</p>
       </div>
 
-      <p style={{ margin: 5 }}>{weatherInfo.label}</p>
+      <div className="weather-metrics-grid">
+        <article className="weather-metric-card">
+          <p className="weather-metric-label">Wind</p>
+          <p className="weather-metric-value">{formatMetric(weather.windspeed, " km/h")}</p>
+        </article>
 
-      <h3>{weather.temperature}°C</h3>
+        <article className="weather-metric-card">
+          <p className="weather-metric-label">Humidity</p>
+          <p className="weather-metric-value">{formatMetric(weather.humidity, "%")}</p>
+        </article>
 
-      <p>Wind {weather.windspeed} km/h</p>
+        <article className="weather-metric-card">
+          <p className="weather-metric-label">Precipitation</p>
+          <p className="weather-metric-value">{formatMetric(weather.precipitation, " mm")}</p>
+        </article>
+      </div>
     </div>
   );
 }
