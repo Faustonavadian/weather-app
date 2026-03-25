@@ -19,11 +19,17 @@ function App() {
 
   const background = weather
     ? getWeatherBackground(weather.weathercode)
-    : "linear-gradient(145deg, #0b2144, #1a4686)";
+    : null;
 
   useEffect(() => {
     getCurrentLocationWeather();
   }, []);
+
+  useEffect(() => {
+    if (background) {
+      document.body.style.background = background;
+    }
+  }, [background]);
 
   const searchWeatherByCity = async (inputCity = city) => {
     const query = inputCity.trim();
