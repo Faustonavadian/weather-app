@@ -255,6 +255,7 @@ function App() {
 
   return (
     <div className="app-shell" style={{ "--weather-gradient": background }}>
+      <div className="app-shell-bg" aria-hidden="true" />
       <div className="app-content">
         <h1 className="app-title"> The Weather App</h1>
         <p className="app-subtitle">Real-time weather with smart city search</p>

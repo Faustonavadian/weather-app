@@ -30,7 +30,7 @@ Identified by live inspection of the app on 2026-03-25.
 
 ## Issue 3 — Weather icon is too small (Visual)
 
-**Status:** To fix
+**Status:** Fixed
 
 **What happens:** The weather emoji icon (☀️, 🌤️, etc.) renders at `3.1rem`, which is too small relative to the large temperature number. It gets lost visually and doesn't convey the weather condition with enough impact.
 

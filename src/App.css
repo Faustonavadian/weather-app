@@ -19,7 +19,16 @@
   -webkit-backdrop-filter: blur(14px);
 }
 
-.app-shell::before {
+.app-shell-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app-shell-bg::before {
   content: "";
   position: absolute;
   inset: -35%;
@@ -27,17 +36,13 @@
   opacity: 0.3;
   filter: blur(72px);
   transform: translateY(-20%);
-  pointer-events: none;
-  z-index: 0;
 }
 
-.app-shell::after {
+.app-shell-bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(143, 191, 255, 0.1), rgba(143, 191, 255, 0));
-  pointer-events: none;
-  z-index: 0;
 }
 
 .app-content {
@@ -196,8 +201,9 @@
 
 .weather-icon {
   margin-top: 12px;
-  font-size: 3.1rem;
+  font-size: 4.5rem;
   line-height: 1;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
 }
 
 .weather-label {
