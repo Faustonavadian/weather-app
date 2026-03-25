@@ -6,7 +6,7 @@ Identified by live inspection of the app on 2026-03-25.
 
 ## Issue 1 — Suggestions dropdown is clipped (Bug)
 
-**Status:** To fix
+**Status:** Fixed (commit ca5821b)
 
 **What happens:** When the user types a city name, the autocomplete dropdown is cut off by the card boundary. Only the first suggestion is visible, even though up to 6 are returned.
 
@@ -18,7 +18,7 @@ Identified by live inspection of the app on 2026-03-25.
 
 ## Issue 2 — Geolocation error persists after a successful search (Bug)
 
-**Status:** To fix
+**Status:** Fixed
 
 **What happens:** After geolocation is denied, the error "Location access was denied. Search for a city to continue." remains visible even after the user finds weather for a city by searching.
 

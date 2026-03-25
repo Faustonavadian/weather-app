@@ -320,7 +320,7 @@ function App() {
           </button>
         </div>
 
-        {errorMessage && <p className="error-text">{errorMessage}</p>}
+        {errorMessage && !weather && <p className="error-text">{errorMessage}</p>}
 
         {loading && <p className="status-text">Loading weather...</p>}
 
