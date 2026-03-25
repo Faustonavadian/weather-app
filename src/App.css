@@ -12,7 +12,6 @@
   border-radius: 28px;
   padding: 28px;
   position: relative;
-  overflow: hidden;
   border: 1px solid rgba(148, 194, 255, 0.24);
   background: linear-gradient(155deg, rgba(6, 16, 34, 0.84), rgba(11, 34, 66, 0.66));
   box-shadow: 0 30px 60px rgba(0, 10, 29, 0.55);
