@@ -234,6 +234,12 @@
   color: #c2d9f8;
 }
 
+.weather-feels-like {
+  margin: 6px 0 0;
+  color: #8ab4e0;
+  font-size: 0.88rem;
+}
+
 .weather-temp {
   margin-top: 14px;
   font-family: "Space Grotesk", "Avenir Next", sans-serif;

@@ -21,7 +21,7 @@ export const getCoordinates = async (city) => {
 
 export const getWeather = async (latitude, longitude) => {
   const response = await fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,precipitation,weather_code,wind_speed_10m`
+    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m`
   );
 
   if (!response.ok) {
@@ -36,6 +36,7 @@ export const getWeather = async (latitude, longitude) => {
 
   return {
     temperature: data.current.temperature_2m,
+    feelsLike: data.current.apparent_temperature,
     windspeed: data.current.wind_speed_10m,
     weathercode: data.current.weather_code,
     humidity: data.current.relative_humidity_2m,

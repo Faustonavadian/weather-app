@@ -23,6 +23,13 @@ function WeatherCard({ weather }) {
       ? Math.round(weather.temperature)
       : Math.round((weather.temperature * 9) / 5 + 32);
 
+  const displayFeelsLike =
+    weather.feelsLike == null
+      ? null
+      : unit === "C"
+      ? Math.round(weather.feelsLike)
+      : Math.round((weather.feelsLike * 9) / 5 + 32);
+
   return (
     <div className="weather-card">
       <div className="weather-core">
@@ -44,6 +51,10 @@ function WeatherCard({ weather }) {
         </div>
 
         <p className="weather-label">{weatherInfo.label}</p>
+
+        {displayFeelsLike != null && (
+          <p className="weather-feels-like">Feels like {displayFeelsLike}°{unit}</p>
+        )}
       </div>
 
       <div className="weather-metrics-grid">

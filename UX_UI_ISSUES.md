@@ -60,7 +60,7 @@ Identified by live inspection of the app on 2026-03-25.
 
 ## Issue 6 — Missing "Feels like" temperature (Feature)
 
-**Status:** To fix
+**Status:** Fixed
 
 **What happens:** The weather card only shows Wind, Humidity, and Precipitation. "Feels like" (apparent temperature) is a key metric users expect.
 
