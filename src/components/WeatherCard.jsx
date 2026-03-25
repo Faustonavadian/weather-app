@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { weatherCodeMap } from "../services/weatherCodes";
 
 function WeatherCard({ weather }) {
+  const [unit, setUnit] = useState("C");
+
   const weatherInfo =
     weatherCodeMap[weather.weathercode] || {
       label: "Unknown",
@@ -15,6 +18,11 @@ function WeatherCard({ weather }) {
     return `${value}${suffix}`;
   };
 
+  const displayTemp =
+    unit === "C"
+      ? Math.round(weather.temperature)
+      : Math.round((weather.temperature * 9) / 5 + 32);
+
   return (
     <div className="weather-card">
       <div className="weather-core">
@@ -23,8 +31,16 @@ function WeatherCard({ weather }) {
         <div className="weather-icon">{weatherInfo.icon}</div>
 
         <div className="weather-temp">
-          {Math.round(weather.temperature)}
-          <span className="weather-unit">°C</span>
+          {displayTemp}
+          <span className="weather-unit">°{unit}</span>
+          <button
+            className="unit-toggle"
+            type="button"
+            aria-label={`Switch to °${unit === "C" ? "F" : "C"}`}
+            onClick={() => setUnit((u) => (u === "C" ? "F" : "C"))}
+          >
+            °{unit === "C" ? "F" : "C"}
+          </button>
         </div>
 
         <p className="weather-label">{weatherInfo.label}</p>

@@ -249,6 +249,25 @@
   opacity: 0.85;
 }
 
+.unit-toggle {
+  margin-left: 10px;
+  background: rgba(97, 162, 255, 0.15);
+  border: 1px solid rgba(97, 162, 255, 0.35);
+  border-radius: 8px;
+  color: #8ab8f5;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.unit-toggle:hover {
+  background: rgba(97, 162, 255, 0.3);
+  color: #f5f9ff;
+}
+
 .weather-metrics-grid {
   margin-top: 18px;
   display: grid;

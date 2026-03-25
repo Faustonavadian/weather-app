@@ -50,7 +50,7 @@ Identified by live inspection of the app on 2026-03-25.
 
 ## Issue 5 — No °C / °F toggle (Feature)
 
-**Status:** To fix
+**Status:** Fixed
 
 **What happens:** Temperature is always shown in °C. There is no way for users who prefer Fahrenheit to switch units.
 
