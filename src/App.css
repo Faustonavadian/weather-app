@@ -88,6 +88,10 @@
   transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
+.city-input--has-value {
+  padding-right: 36px;
+}
+
 .city-input::placeholder {
   color: #9cb9e1;
 }
@@ -96,6 +100,25 @@
   border-color: rgba(126, 188, 255, 0.8);
   box-shadow: 0 0 0 3px rgba(76, 150, 255, 0.2);
   background: rgba(5, 17, 35, 0.74);
+}
+
+.clear-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #7aa3cc;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: color 150ms ease;
+}
+
+.clear-button:hover {
+  color: #f5f9ff;
 }
 
 .search-button {

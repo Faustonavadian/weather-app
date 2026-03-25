@@ -40,7 +40,7 @@ Identified by live inspection of the app on 2026-03-25.
 
 ## Issue 4 — No clear button on the search input (UX)
 
-**Status:** To fix
+**Status:** Fixed
 
 **What happens:** Once a city name fills the input, there's no easy way to clear it and start fresh. The user has to manually select all text and delete it.
 

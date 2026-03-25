@@ -263,7 +263,7 @@ function App() {
         <div className="search-row" ref={searchContainerRef}>
           <div className="search-input-wrap">
             <input
-              className="city-input"
+              className={`city-input${city ? " city-input--has-value" : ""}`}
               type="text"
               placeholder="Search for a city..."
               value={city}
@@ -282,6 +282,25 @@ function App() {
               aria-label="Search city"
               aria-autocomplete="list"
             />
+
+            {city && (
+              <button
+                className="clear-button"
+                type="button"
+                aria-label="Clear search"
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => {
+                  setCity("");
+                  setWeather(null);
+                  setErrorMessage("");
+                  setSuggestions([]);
+                  setShowSuggestions(false);
+                  setActiveSuggestionIndex(-1);
+                }}
+              >
+                ×
+              </button>
+            )}
 
             {showSuggestions && city.trim().length >= 2 && (
               <div className="suggestions-box" role="listbox" aria-label="City suggestions">
