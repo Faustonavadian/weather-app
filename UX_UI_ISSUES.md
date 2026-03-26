@@ -82,7 +82,7 @@ Identified by live inspection of the app on 2026-03-25.
 
 ## Issue 8 — Subtitle is generic marketing copy (Polish)
 
-**Status:** To fix
+**Status:** Fixed
 
 **What happens:** "Real-time weather with smart city search" is always shown and is not useful once the user has loaded weather data.
 

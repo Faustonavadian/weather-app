@@ -13,6 +13,7 @@ function App() {
   const [suggestionsLoading, setSuggestionsLoading] = useState(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
   const [errorMessage, setErrorMessage] = useState("");
+  const [lastUpdated, setLastUpdated] = useState(null);
 
   const searchContainerRef = useRef(null);
   const suggestionCacheRef = useRef(new Map());
@@ -49,6 +50,7 @@ function App() {
       const displayName = coords.country ? `${coords.name}, ${coords.country}` : coords.name;
 
       setWeather({ ...weatherData, city: displayName });
+      setLastUpdated(new Date());
       setCity(displayName);
     } catch (error) {
       setErrorMessage(error.message || "Unable to fetch weather right now.");
@@ -79,6 +81,7 @@ function App() {
             ...weatherData,
             city: cityName
           });
+          setLastUpdated(new Date());
           setCity(cityName);
         } catch (error) {
           setErrorMessage(error.message || "Unable to fetch weather for your location.");
@@ -167,6 +170,7 @@ function App() {
         ...weatherData,
         city: suggestion.name
       });
+      setLastUpdated(new Date());
     } catch (error) {
       setErrorMessage(error.message || "Unable to fetch weather right now.");
     } finally {
@@ -259,7 +263,13 @@ function App() {
       <div className="app-shell-bg" aria-hidden="true" />
       <div className="app-content">
         <h1 className="app-title"> The Weather App</h1>
-        <p className="app-subtitle">Real-time weather with smart city search</p>
+        {weather && lastUpdated ? (
+          <p className="app-subtitle">
+            Updated at {lastUpdated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+          </p>
+        ) : (
+          <p className="app-subtitle">Real-time weather with smart city search</p>
+        )}
 
         <div className="search-row" ref={searchContainerRef}>
           <div className="search-input-wrap">
@@ -293,6 +303,7 @@ function App() {
                 onClick={() => {
                   setCity("");
                   setWeather(null);
+                  setLastUpdated(null);
                   setErrorMessage("");
                   setSuggestions([]);
                   setShowSuggestions(false);
