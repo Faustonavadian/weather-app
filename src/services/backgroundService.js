@@ -1,59 +1,94 @@
+/**
+ * Returns { gradient, glowA, glowB } for a given WMO weather code.
+ * gradient — full CSS background value applied to document.body
+ * glowA/glowB — colors for the two ambient blobs (body::before / body::after)
+ */
 export const getWeatherBackground = (weathercode) => {
-  // Clear sky — warm yellow/amber accent top-left
+  // Clear sky — warm golden-amber sun feel
   if (weathercode === 0) {
-    return `
-      radial-gradient(circle at 12% 12%, rgba(255, 210, 55, 0.30), transparent 40%),
-      radial-gradient(circle at 85% 10%, rgba(29, 73, 148, 0.25), transparent 42%),
-      linear-gradient(145deg, #0d1e3b 0%, #0f2f62 46%, #0a3060 100%)
-    `;
+    return {
+      gradient: `
+        radial-gradient(circle at 14% 14%, rgba(255, 200, 45, 0.55), transparent 40%),
+        radial-gradient(circle at 82% 10%, rgba(80, 145, 255, 0.35), transparent 38%),
+        linear-gradient(150deg, #0d2040 0%, #1a4080 48%, #0e305a 100%)
+      `,
+      glowA: "rgba(220, 165, 28, 0.42)",
+      glowB: "rgba(50, 118, 220, 0.32)",
+    };
   }
 
-  // Partly cloudy — faint warm tint fading to blue
+  // Mainly clear / Partly cloudy — muted warm tint
   if (weathercode <= 3) {
-    return `
-      radial-gradient(circle at 12% 12%, rgba(190, 165, 80, 0.18), transparent 40%),
-      radial-gradient(circle at 85% 10%, rgba(29, 73, 148, 0.25), transparent 42%),
-      linear-gradient(145deg, #0a1a33 0%, #0d2850 46%, #091f45 100%)
-    `;
+    return {
+      gradient: `
+        radial-gradient(circle at 14% 14%, rgba(200, 162, 50, 0.38), transparent 42%),
+        radial-gradient(circle at 80% 12%, rgba(50, 100, 195, 0.30), transparent 42%),
+        linear-gradient(150deg, #0a1e3c 0%, #102550 48%, #0b2448 100%)
+      `,
+      glowA: "rgba(185, 145, 32, 0.30)",
+      glowB: "rgba(40, 88, 180, 0.28)",
+    };
   }
 
-  // Fog — muted grey-blue veil
+  // Fog / Depositing rime fog — diffuse silver veil
   if (weathercode >= 45 && weathercode <= 48) {
-    return `
-      radial-gradient(circle at 50% 0%, rgba(140, 160, 185, 0.22), transparent 50%),
-      linear-gradient(145deg, #0a1422 0%, #131d2e 46%, #141e30 100%)
-    `;
+    return {
+      gradient: `
+        radial-gradient(circle at 50% 8%, rgba(170, 185, 205, 0.55), transparent 55%),
+        linear-gradient(155deg, #0a1220 0%, #141c2c 50%, #0f1828 100%)
+      `,
+      glowA: "rgba(155, 172, 192, 0.38)",
+      glowB: "rgba(120, 142, 165, 0.30)",
+    };
   }
 
-  // Drizzle / Rain — deep cool blue
+  // Drizzle / Light-to-heavy rain — deep steel blue
   if (weathercode >= 51 && weathercode <= 65) {
-    return `
-      radial-gradient(circle at 18% 10%, rgba(40, 90, 200, 0.28), transparent 45%),
-      radial-gradient(circle at 80% 85%, rgba(20, 55, 130, 0.22), transparent 40%),
-      linear-gradient(145deg, #040c1c 0%, #081a3a 46%, #091e45 100%)
-    `;
+    return {
+      gradient: `
+        radial-gradient(circle at 18% 10%, rgba(28, 78, 205, 0.58), transparent 45%),
+        radial-gradient(circle at 82% 82%, rgba(14, 48, 145, 0.42), transparent 40%),
+        linear-gradient(155deg, #02070f 0%, #050c20 48%, #071428 100%)
+      `,
+      glowA: "rgba(22, 68, 185, 0.50)",
+      glowB: "rgba(10, 42, 132, 0.42)",
+    };
   }
 
-  // Snow — icy pale-blue accent
+  // Snow — icy pale blue-white
   if (weathercode >= 71 && weathercode <= 77) {
-    return `
-      radial-gradient(circle at 20% 15%, rgba(145, 200, 255, 0.26), transparent 45%),
-      linear-gradient(145deg, #080f1e 0%, #0d1e3a 46%, #0e2245 100%)
-    `;
+    return {
+      gradient: `
+        radial-gradient(circle at 28% 10%, rgba(178, 225, 255, 0.58), transparent 48%),
+        radial-gradient(circle at 72% 85%, rgba(138, 195, 242, 0.32), transparent 40%),
+        linear-gradient(155deg, #060c1a 0%, #0b1c36 50%, #0c1e3c 100%)
+      `,
+      glowA: "rgba(158, 210, 255, 0.48)",
+      glowB: "rgba(118, 180, 232, 0.38)",
+    };
   }
 
-  // Thunderstorm — electric violet tint
+  // Thunderstorm — near-black with electric violet
   if (weathercode >= 95) {
-    return `
-      radial-gradient(circle at 30% 20%, rgba(105, 60, 210, 0.28), transparent 45%),
-      linear-gradient(145deg, #05080f 0%, #0a0e24 46%, #0c1230 100%)
-    `;
+    return {
+      gradient: `
+        radial-gradient(circle at 28% 18%, rgba(118, 52, 245, 0.58), transparent 45%),
+        radial-gradient(circle at 72% 14%, rgba(200, 210, 25, 0.14), transparent 30%),
+        linear-gradient(155deg, #02030a 0%, #050710 50%, #07091c 100%)
+      `,
+      glowA: "rgba(98, 38, 222, 0.52)",
+      glowB: "rgba(58, 18, 162, 0.42)",
+    };
   }
 
-  // Default (showers / mixed)
-  return `
-    radial-gradient(circle at 14% 20%, rgba(54, 110, 210, 0.35), transparent 45%),
-    radial-gradient(circle at 86% 10%, rgba(29, 73, 148, 0.34), transparent 42%),
-    linear-gradient(145deg, #030a18 0%, #071f45 46%, #0a315d 100%)
-  `;
+  // Default — showers / mixed precipitation
+  return {
+    gradient: `
+      radial-gradient(circle at 16% 14%, rgba(42, 98, 225, 0.52), transparent 45%),
+      radial-gradient(circle at 86% 12%, rgba(24, 68, 168, 0.44), transparent 42%),
+      linear-gradient(155deg, #02080f 0%, #061328 48%, #091c3e 100%)
+    `,
+    glowA: "rgba(38, 88, 202, 0.46)",
+    glowB: "rgba(22, 62, 165, 0.40)",
+  };
 };

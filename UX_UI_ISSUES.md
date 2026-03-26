@@ -72,7 +72,7 @@ Identified by live inspection of the app on 2026-03-25.
 
 ## Issue 7 — Background gradient too subtle per weather condition (Visual)
 
-**Status:** To fix
+**Status:** Fixed
 
 **What happens:** The background gradient changes between weather conditions but the difference is barely perceptible. Clear sky in New York looks almost identical to cloudy London.
 

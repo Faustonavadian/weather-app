@@ -33,7 +33,7 @@
   position: absolute;
   inset: -35%;
   background: var(--weather-gradient, linear-gradient(145deg, #0b2144, #1a4686));
-  opacity: 0.3;
+  opacity: 0.5;
   filter: blur(72px);
   transform: translateY(-20%);
 }

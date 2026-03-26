@@ -17,17 +17,18 @@ function App() {
   const searchContainerRef = useRef(null);
   const suggestionCacheRef = useRef(new Map());
 
-  const background = weather
-    ? getWeatherBackground(weather.weathercode)
-    : null;
+  const weatherBg = weather ? getWeatherBackground(weather.weathercode) : null;
+  const background = weatherBg ? weatherBg.gradient : null;
 
   useEffect(() => {
     getCurrentLocationWeather();
   }, []);
 
   useEffect(() => {
-    if (background) {
-      document.body.style.background = background;
+    if (weatherBg) {
+      document.body.style.background = weatherBg.gradient;
+      document.body.style.setProperty("--glow-a", weatherBg.glowA);
+      document.body.style.setProperty("--glow-b", weatherBg.glowB);
     }
   }, [background]);
 

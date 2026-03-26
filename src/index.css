@@ -40,7 +40,8 @@ body::before {
   height: 340px;
   top: -120px;
   left: -100px;
-  background: rgba(75, 135, 255, 0.24);
+  background: var(--glow-a, rgba(75, 135, 255, 0.24));
+  transition: background 0.8s ease;
 }
 
 body::after {
@@ -48,7 +49,8 @@ body::after {
   height: 280px;
   right: -90px;
   bottom: -80px;
-  background: rgba(37, 96, 196, 0.26);
+  background: var(--glow-b, rgba(37, 96, 196, 0.26));
+  transition: background 0.8s ease;
   animation-delay: -3s;
 }
 
