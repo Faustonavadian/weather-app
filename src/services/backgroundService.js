@@ -18,7 +18,7 @@ export const getWeatherBackground = (weathercode) => {
   }
 
   // Mainly clear / Partly cloudy — muted warm tint
-  if (weathercode <= 3) {
+  if (weathercode <= 2) {
     return {
       gradient: `
         radial-gradient(circle at 14% 14%, rgba(200, 162, 50, 0.38), transparent 42%),
@@ -27,6 +27,19 @@ export const getWeatherBackground = (weathercode) => {
       `,
       glowA: "rgba(185, 145, 32, 0.30)",
       glowB: "rgba(40, 88, 180, 0.28)",
+    };
+  }
+
+  // Overcast — flat grey-blue, no warmth
+  if (weathercode === 3) {
+    return {
+      gradient: `
+        radial-gradient(circle at 50% 5%, rgba(130, 150, 175, 0.45), transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(80, 100, 130, 0.25), transparent 45%),
+        linear-gradient(160deg, #080e18 0%, #0e1724 50%, #111c2e 100%)
+      `,
+      glowA: "rgba(110, 130, 158, 0.38)",
+      glowB: "rgba(75, 95, 125, 0.30)",
     };
   }
 
